@@ -6,7 +6,8 @@
 }
 .quote {
   display: grid;
-  height: calc(100vh - var(--footerSpacing));
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
 }
 .quote-text {
   height: 100%;
@@ -77,6 +78,6 @@ footer a {
 .tweetIcon {
   right: auto;
   left: var(--iconOffset);
-  top: calc((100vh - var(--footerSpacing)) * (2 / 3) + var(--iconOffset));
+  top: calc((var(--vh) - var(--footerSpacing)) * (2 / 3) + var(--iconOffset));
   border: 0;
 }
