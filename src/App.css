@@ -1,0 +1,82 @@
+:root {
+  --footerSpacing: 35px;
+  --iconDims: 13vmin;
+  --quoteFont: 15vmin;
+  --iconOffset: 2vmin;
+}
+.quote {
+  display: grid;
+  height: calc(100vh - var(--footerSpacing));
+}
+.quote-text {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--quoteFont);
+  font-family: "EB Garamond", serif;
+  position: relative;
+}
+footer {
+  text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  height: var(--footerSpacing);
+  background: black;
+  width: 100%;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+}
+footer a {
+  color: white;
+}
+.fade-in {
+  transition: opacity 1s ease;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.appIcon {
+  position: absolute;
+  top: var(--iconOffset);
+  right: var(--iconOffset);
+  width: var(--iconDims);
+  height: var(--iconDims);
+  background: #00000044;
+  border-radius: calc(2 * var(--iconDims));
+  font-size: calc(var(--iconDims) / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000cc;
+  transition: all 0.4s;
+  box-shadow: 0 15px 15px -15px black;
+}
+.appIcon.locked {
+  color: 0 15px 15px -15px #760000;
+}
+.appIcon.unlocked {
+  box-shadow: 0 15px 15px -15px #002a00;
+}
+.appIcon:hover {
+  cursor: pointer;
+  background: #000000;
+  color: #ffffffcc;
+}
+.generateIcon {
+  right: auto;
+  left: var(--iconOffset);
+  border: 0;
+}
+.tweetIcon {
+  right: auto;
+  left: var(--iconOffset);
+  top: calc((100vh - var(--footerSpacing)) * (2 / 3) + var(--iconOffset));
+  border: 0;
+}
