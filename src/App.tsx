@@ -11,21 +11,31 @@ import {
   colors,
 } from "./StringTokens";
 
+interface ShakeState {
+  q1: string;
+  q2: string;
+  q3: string;
+  lock1: boolean;
+  lock2: boolean;
+  lock3: boolean;
+  shouldRewriteHistory: boolean;
+}
+
 function App(): JSX.Element {
-  const defaultState = {
+  const defaultState: ShakeState = {
     q1: "",
     q2: "",
     q3: "",
     lock1: false,
     lock2: false,
     lock3: false,
-    shouldChangeHistory: false,
+    shouldRewriteHistory: false,
   };
 
   const history = useHistory();
   const location = useLocation();
 
-  const reducer = (state: any, newState: any) => ({
+  const reducer = (state: ShakeState, newState: ShakeState) => ({
     ...state,
     ...newState,
   });
@@ -59,6 +69,7 @@ function App(): JSX.Element {
     // if url has 3 in path, parse that to see if it's valid and use those values
     if (isValidPath && !force) {
       setState({
+        ...state,
         q1: splitLocation[0],
         q2: splitLocation[1],
         q3: splitLocation[2],
@@ -70,6 +81,7 @@ function App(): JSX.Element {
       const q2update = lock2 ? q2 : getRandomStringFromArray(adjectiveListB);
       const q3update = lock3 ? q3 : getRandomStringFromArray(nounList);
       setState({
+        ...state,
         q1: q1update,
         q2: q2update,
         q3: q3update,
@@ -84,8 +96,20 @@ function App(): JSX.Element {
   };
 
   const invertLockState = (i: number): void => {
+    let lockState = false;
+    switch (i) {
+      case 1:
+        lockState = state.lock1;
+        break;
+      case 2:
+        lockState = state.lock2;
+        break;
+      default:
+        lockState = state.lock3;
+    }
     setState({
-      ["lock" + i]: !state["lock" + i],
+      ...state,
+      ["lock" + i]: !lockState,
     });
   };
 

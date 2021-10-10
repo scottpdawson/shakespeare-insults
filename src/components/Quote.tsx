@@ -7,8 +7,8 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 interface QuoteProps {
   quote: string[];
   lockState: boolean[];
-  invertLockState(i: number): any;
-  generateRandomQuote(force?: boolean, path?: string): any;
+  invertLockState(i: number): void;
+  generateRandomQuote(force?: boolean, path?: string): void;
   colors: string[];
 }
 
