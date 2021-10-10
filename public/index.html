@@ -31,6 +31,20 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Shakespeare Insulter</title>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-P9KY8MGGRR"
+    ></script>
+    <script>
+      if (document.location.hostname.search("shakespeare-insults") !== -1) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-P9KY8MGGRR");
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
